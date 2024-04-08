@@ -12,7 +12,7 @@ export class LambdaNodeCdkStack extends Stack {
       partitionKey: { name: "id", type: AttributeType.STRING },
     });
 
-    new NodejsFunction(this, "MyFunc", {
+    const thisLambda = new NodejsFunction(this, "MyFunc", {
       runtime: Runtime.NODEJS_16_X,
       handler: "handler",
       entry: "lib/lambda-node.ts",
@@ -20,5 +20,6 @@ export class LambdaNodeCdkStack extends Stack {
         TABLE_NAME: table.tableName,
       },
     });
+    table.grantReadData(thisLambda) 
   }
 }

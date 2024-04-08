@@ -2,7 +2,7 @@ import { APIGatewayProxyResult } from "aws-lambda";
 import { DynamoDB, GetItemCommand } from "@aws-sdk/client-dynamodb";
 
 const tableName = process.env.TABLE_NAME;
-const dynamoDbClient = new DynamoDB({ region: "eu-central-1" });
+const dynamoDbClient = new DynamoDB();
 
 type DBItem = { item_id: string };
 
